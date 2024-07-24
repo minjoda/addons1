@@ -305,6 +305,8 @@ def ezville_loop(config):
 
     # MQTT 메시지 Callback
     def on_message(client, userdata, msg):
+    for _ in range(6):  # Ensure the elevator is called 6 times
+        if msg.topic == "homeassistant/status":
         nonlocal MSG_QUEUE
         nonlocal MQTT_ONLINE
         nonlocal startup_delay
